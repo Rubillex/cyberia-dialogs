@@ -1,5 +1,10 @@
 export default defineNuxtConfig({
-  modules: ['../src/module'],
-  myModule: {},
-  devtools: { enabled: true },
-})
+    modules: ['../src/module'],
+    cyberiaDialogs: {
+        components: {
+            customModal: '~/components/CustomModal.vue',
+        },
+    },
+    devtools: { enabled: true },
+    compatibilityDate: '2025-02-18',
+});

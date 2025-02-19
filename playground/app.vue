@@ -1,8 +1,14 @@
 <template>
-  <div>
-    Nuxt module playground!
-  </div>
+    <div>
+        <div>
+            Nuxt module playground!
+            <button @click="useCyberiaDialogs().open('customModal')">Открыть модалку</button>
+        </div>
+
+        <CyberiaDialogsModal />
+    </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+const { openDialogs, isAnyOpen } = useCyberiaDialogs();
 </script>

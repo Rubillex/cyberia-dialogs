@@ -1,48 +1,68 @@
 {
-  "name": "my-module",
-  "version": "1.0.0",
-  "description": "My new Nuxt module",
-  "repository": "your-org/my-module",
-  "license": "MIT",
-  "type": "module",
-  "exports": {
-    ".": {
-      "types": "./dist/types.d.ts",
-      "import": "./dist/module.mjs",
-      "require": "./dist/module.cjs"
+    "name": "cyberia-dialogs",
+    "version": "1.0.0",
+    "description": "Cyberia dialogs module",
+    "repository": "Rubillex/cyberia-dialogs",
+    "license": "MIT",
+    "type": "module",
+    "exports": {
+        ".": {
+            "types": "./dist/types.d.ts",
+            "import": "./dist/module.mjs",
+            "require": "./dist/module.cjs"
+        },
+        "./dialogs": {
+            "types": "./dialogs.d.ts"
+        }
+    },
+    "main": "./dist/module.cjs",
+    "types": "./dist/types.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "prepack": "nuxt-module-build build",
+        "dev": "nuxi dev playground",
+        "dev:build": "nuxi build playground",
+        "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
+        "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+        "lint": "eslint .",
+        "test": "vitest run",
+        "test:watch": "vitest watch",
+        "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
+    },
+    "dependencies": {
+        "@nuxt/kit": "^3.15.4"
+    },
+    "devDependencies": {
+        "@nuxtjs/stylelint-module": "^5.2.0",
+        "stylelint": "^16.14.1",
+        "stylelint-config-rational-order-fix": "^0.1.9",
+        "stylelint-config-recommended-vue": "latest",
+        "stylelint-config-standard-scss": "^14.0.0",
+        "stylelint-order": "^6.0.4",
+        "@nuxtjs/eslint-config": "^12.0.0",
+        "@nuxtjs/eslint-config-typescript": "^12.1.0",
+        "@nuxtjs/eslint-module": "^4.1.0",
+        "@rushstack/eslint-patch": "^1.10.5",
+        "@typescript-eslint/eslint-plugin": "^8.22.0",
+        "@typescript-eslint/parser": "^8.22.0",
+        "eslint": "^8.57.1",
+        "eslint-config-prettier": "^10.0.1",
+        "eslint-plugin-prettier": "^5.2.3",
+        "prettier": "^3.4.2",
+        "eslint-plugin-vue": "^9.32.0",
+        "typescript-eslint": "^8.22.0",
+        "vue-eslint-parser": "^9.4.3",
+        "@nuxt/devtools": "^2.1.0",
+        "@nuxt/module-builder": "^0.8.4",
+        "@nuxt/schema": "^3.15.4",
+        "@nuxt/test-utils": "^3.15.4",
+        "@types/node": "latest",
+        "changelogen": "^0.5.7",
+        "nuxt": "^3.15.4",
+        "typescript": "~5.7.3",
+        "vitest": "^3.0.5",
+        "vue-tsc": "^2.2.2"
     }
-  },
-  "main": "./dist/module.cjs",
-  "types": "./dist/types.d.ts",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "prepack": "nuxt-module-build build",
-    "dev": "nuxi dev playground",
-    "dev:build": "nuxi build playground",
-    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
-    "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
-    "lint": "eslint .",
-    "test": "vitest run",
-    "test:watch": "vitest watch",
-    "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
-  },
-  "dependencies": {
-    "@nuxt/kit": "^3.15.4"
-  },
-  "devDependencies": {
-    "@nuxt/devtools": "^2.1.0",
-    "@nuxt/eslint-config": "^1.0.1",
-    "@nuxt/module-builder": "^0.8.4",
-    "@nuxt/schema": "^3.15.4",
-    "@nuxt/test-utils": "^3.15.4",
-    "@types/node": "latest",
-    "changelogen": "^0.5.7",
-    "eslint": "^9.20.1",
-    "nuxt": "^3.15.4",
-    "typescript": "~5.7.3",
-    "vitest": "^3.0.5",
-    "vue-tsc": "^2.2.2"
-  }
 }
